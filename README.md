@@ -16,6 +16,12 @@ SUGGESTION: Add Int from https://polyfill.io/
 
 ## How to use
 
+### Install
+
+```shell
+npm i @videsk/humanize-date
+```
+
 It's simple:
 
 ```js
