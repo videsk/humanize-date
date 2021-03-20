@@ -1,0 +1,32 @@
+{
+  "name": "@videsk/humanize-date",
+  "version": "1.0.0",
+  "description": "Humanize dates making readable in locale and ultra lightweight",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git remote add origin https://github.com/videsk/humanize-date.git"
+  },
+  "keywords": [
+    "dates",
+    "time",
+    "locale",
+    "time-convert",
+    "dates-convert",
+    "videsk"
+  ],
+  "author": "videsk",
+  "license": "LGPL-2.1",
+  "homepage": "https://open.videsk.io",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  }
+}
