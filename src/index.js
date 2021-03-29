@@ -46,7 +46,7 @@ class HumanizeDate {
      */
     within(unit = 'seconds', options = { numeric: 'auto' }) {
         if (!(unit in this.units)) throw new Error(`The available units are ${Object.keys(this.units)}`);
-        return new Intl.RelativeTimeFormat(navigator.language, options).format(this.units[unit](this.from, this.to), (unit !== 'auto') ? unit : this.autoToUnitText(this.from, this.to));
+        return new Intl.RelativeTimeFormat(navigator.language, options).format(Math.floor(this.units[unit](this.from, this.to)), (unit !== 'auto') ? unit : this.autoToUnitText(this.from, this.to));
     }
 
     /**
@@ -57,7 +57,7 @@ class HumanizeDate {
      */
     ago(unit = 'seconds', options = { numeric: 'auto' }) {
         if (!(unit in this.units)) throw new Error(`The available units are ${Object.keys(this.units)}`);
-        return new Intl.RelativeTimeFormat(navigator.language, options).format(this.units[unit](this.from, this.to) * -1, (unit !== 'auto') ? unit : this.autoToUnitText(this.from, this.to));
+        return new Intl.RelativeTimeFormat(navigator.language, options).format(Math.floor(this.units[unit](this.from, this.to) * -1), (unit !== 'auto') ? unit : this.autoToUnitText(this.from, this.to));
     }
 
     /**

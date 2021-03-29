@@ -2,6 +2,10 @@
 
 This library use semver.
 
+## v1.1.1
+
+- [FIX] Remove decimals
+
 ## v1.1.0
 
 - [NEW] Units `auto`, automatically returns with the best unit
