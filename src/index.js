@@ -141,18 +141,18 @@ class HumanizeDate {
     }
 
     auto(from, to) {
-        if (this.seconds(from, to) <= 60) return this.seconds(from, to);
-        else if (this.minutes(from, to) <= 60) return this.minutes(from, to);
-        else if (this.hours(from, to) <= 24) return this.hours(from, to);
+        if (this.seconds(from, to) < 60) return this.seconds(from, to);
+        else if (this.minutes(from, to) < 60) return this.minutes(from, to);
+        else if (this.hours(from, to) < 24) return this.hours(from, to);
         else if (this.days(from, to) <= 31) return this.days(from, to);
         else if (this.months(from, to) <= 12) return this.months(from, to);
         else return this.years(from, to);
     }
 
     autoToUnitText(from, to) {
-        if (this.seconds(from, to) <= 60) return 'seconds';
-        else if (this.minutes(from, to) <= 60) return 'minutes';
-        else if (this.hours(from, to) <= 24) return 'hours';
+        if (this.seconds(from, to) < 60) return 'seconds';
+        else if (this.minutes(from, to) < 60) return 'minutes';
+        else if (this.hours(from, to) < 24) return 'hours';
         else if (this.days(from, to) <= 31) return 'days';
         else if (this.months(from, to) <= 12) return 'months';
         else return 'years';
