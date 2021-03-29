@@ -12,6 +12,7 @@ class HumanizeDate {
             months: this.months,
             years: this.years,
             quarters: this.quarters,
+            auto: this.auto,
         }
     }
 
@@ -45,7 +46,7 @@ class HumanizeDate {
      */
     within(unit = 'seconds', options = { numeric: 'auto' }) {
         if (!(unit in this.units)) throw new Error(`The available units are ${Object.keys(this.units)}`);
-        return new Intl.RelativeTimeFormat(navigator.language, options).format(this.units[unit](this.from, this.to), unit);
+        return new Intl.RelativeTimeFormat(navigator.language, options).format(this.units[unit](this.from, this.to), (unit !== 'auto') ? unit : this.autoToUnitText(this.from, this.to));
     }
 
     /**
@@ -56,7 +57,7 @@ class HumanizeDate {
      */
     ago(unit = 'seconds', options = { numeric: 'auto' }) {
         if (!(unit in this.units)) throw new Error(`The available units are ${Object.keys(this.units)}`);
-        return new Intl.RelativeTimeFormat(navigator.language, options).format(this.units[unit](this.from, this.to) * -1, unit);
+        return new Intl.RelativeTimeFormat(navigator.language, options).format(this.units[unit](this.from, this.to) * -1, (unit !== 'auto') ? unit : this.autoToUnitText(this.from, this.to));
     }
 
     /**
@@ -139,6 +140,24 @@ class HumanizeDate {
         return Math.abs(this.months(from, to) / 4);
     }
 
+    auto(from, to) {
+        if (this.seconds(from, to) <= 60) return this.seconds(from, to);
+        else if (this.minutes(from, to) <= 60) return this.minutes(from, to);
+        else if (this.hours(from, to) <= 24) return this.hours(from, to);
+        else if (this.days(from, to) <= 31) return this.days(from, to);
+        else if (this.months(from, to) <= 12) return this.months(from, to);
+        else return this.years(from, to);
+    }
+
+    autoToUnitText(from, to) {
+        if (this.seconds(from, to) <= 60) return 'seconds';
+        else if (this.minutes(from, to) <= 60) return 'minutes';
+        else if (this.hours(from, to) <= 24) return 'hours';
+        else if (this.days(from, to) <= 31) return 'days';
+        else if (this.months(from, to) <= 12) return 'months';
+        else return 'years';
+    }
+
 
     /**
      * Get dates based on parameters
@@ -153,12 +172,4 @@ class HumanizeDate {
     }
 }
 
-if (typeof define === 'function' && define.amd) {
-    define('HumanizeDate', [], function() {
-        return HumanizeDate;
-    });
-}
-
-if (typeof module !== 'undefined') {
-    module.exports = HumanizeDate;
-}
+module.exports = HumanizeDate;
