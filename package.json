@@ -1,6 +1,6 @@
 {
   "name": "@videsk/humanize-date",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Humanize dates making readable in locale and ultra lightweight",
   "scripts": {
     "build": "rollup -c",
