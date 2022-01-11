@@ -2,13 +2,13 @@ name: Automated publish
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
 
   publish:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/master' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2

@@ -14,7 +14,7 @@
     "url": "git remote add origin https://github.com/videsk/humanize-date.git"
   },
   "release": {
-    "branches": ["main"]
+    "branches": ["master"]
   },
   "keywords": [
     "dates",
