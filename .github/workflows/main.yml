@@ -1,7 +1,7 @@
 name: Release and Publish
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   release:
@@ -13,7 +13,7 @@ jobs:
       issues: write
       pull-requests: write
     env:
-      NODE_AUTH_TOKEN: ${{ secrets.PAT_GITHUB }}
+      NODE_AUTH_TOKEN: ${{ secrets.READ_PACKAGES_PUB }}
 
     steps:
 
